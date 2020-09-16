@@ -48,7 +48,7 @@ class MatnPage extends StatelessWidget {
                           title: "کلیپ"
                         ),
                         kadr(
-                          title: "صوت"
+                          title: "صدا"
                         ),
                        ]
                     ),
