@@ -35,43 +35,126 @@ class MatnPage extends StatelessWidget {
                 ),
                 Column(
                   children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        kadr(
-                          title: "متن"
-                        ),
-                        kadr(
-                          title: "تصویر"
-                        ),
-                        kadr(
-                          title: "کلیپ"
-                        ),
-                        kadr(
-                          title: "صوتی"
-                        ),
-                       ]
+                    Expanded(
+                      flex: 1,
+                      child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            kadr(title: "متن"),
+                            kadr(title: "تصویر"),
+                            kadr(title: "کلیپ"),
+                            kadr(title: "صوتی"),
+                            kadr(title: "صوت")
+                          ]),
                     ),
-                    Container(
-                      width: 100,
-                      height: 100,
-                      color: Colors.lightGreenAccent,
-                    )
-
+                    Expanded(
+                      flex: 8,
+                      child: Padding(
+                        padding: const EdgeInsets.only(bottom: 15),
+                        child: Container(
+                          height: 100,
+                          width: 320,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(15.0),
+                            color: const Color(0xffffffff),
+                            boxShadow: [
+                              BoxShadow(
+                                color: const Color(0x29000000),
+                                offset: Offset(0, 3),
+                                blurRadius: 6,
+                              ),
+                            ],
+                          ),
+                          child: Column(
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(top: 10),
+                                child: Stack(
+                                  children: [
+                                    Image.asset("assets/images/asset1.png"),
+                                    Padding(
+                                      padding: const EdgeInsets.only(top: 10),
+                                      child: Center(
+                                          child: Text(
+                                        "مقدمه",
+                                        style: TextStyle(
+                                            color: Colors.white, fontSize: 20),
+                                      )),
+                                    )
+                                  ],
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text(
+                                    "امانت - هر چه باشد - به معناى چيزى است كه نزد غير وديعه بسپارند، تا او آن را براى سپارنده حفظ كند، و سپس به وى برگرداند، و در آيه مورد بحث امانت عبارت است از چيزى كه خداى تعالى آن را به انسان به وديعه سپرده، تا انسان آن را براى خدا حفظ كند، و سالم و مستقيم نگه بدارد، و سپس به صاحبش يعنى خداى سبحان برگرداند",
+                                style: TextStyle(
+                                  fontSize:10
+                                ),),
+                              ),
+                              Stack(
+                                children: [
+                                  Image.asset("assets/images/asset1.png"),
+                                  Padding(
+                                    padding: const EdgeInsets.only(top: 10),
+                                    child: Center(
+                                        child: Text(
+                                      "مقدمه",
+                                      style: TextStyle(
+                                          color: Colors.white, fontSize: 20),
+                                    )),
+                                  )
+                                ],
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text(
+                                    "امانت - هر چه باشد - به معناى چيزى است كه نزد غير وديعه بسپارند، تا او آن را براى سپارنده حفظ كند، و سپس به وى برگرداند، و در آيه مورد بحث امانت عبارت است از چيزى كه خداى تعالى آن را به انسان به وديعه سپرده، تا انسان آن را براى خدا حفظ كند، و سالم و مستقيم نگه بدارد، و سپس به صاحبش يعنى خداى سبحان برگرداند",
+                                style: TextStyle(
+                                  fontSize: 10
+                                ),),
+                              ),
+                              Stack(
+                                children: [
+                                  Image.asset("assets/images/asset1.png"),
+                                  Padding(
+                                    padding: const EdgeInsets.only(top: 10),
+                                    child: Center(
+                                        child: Text(
+                                      "مقدمه",
+                                      style: TextStyle(
+                                          color: Colors.white, fontSize: 20),
+                                    )),
+                                  )
+                                ],
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text(
+                                    "امانت - هر چه باشد - به معناى چيزى است كه نزد غير وديعه بسپارند، تا او آن را براى سپارنده حفظ كند، و سپس به وى برگرداند، و در آيه مورد بحث امانت عبارت است از چيزى كه خداى تعالى آن را به انسان به وديعه سپرده، تا انسان آن را براى خدا حفظ كند، و سالم و مستقيم نگه بدارد، و سپس به صاحبش يعنى خداى سبحان برگرداند",
+                                style: TextStyle(
+                                  fontSize: 10
+                                ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
                   ],
                 ),
 
 //            Center(child: Text(""))
               ]),
-            )
-        )
-    );
+            )));
   }
-  Widget kadr({String title = ""}){
+
+  Widget kadr({String title = ""}) {
     return Container(
-      child: Text(title),
+      child: Center(child: Text(title)),
       height: 31.0,
-      width: 50,
+      width: 60,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(6.0),
         color: const Color(0xbdffffff),
