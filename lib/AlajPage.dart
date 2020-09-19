@@ -76,10 +76,10 @@ class MatnPage extends StatelessWidget {
                                       padding: const EdgeInsets.only(top: 10),
                                       child: Center(
                                           child: Text(
-                                        "مقدمه",
-                                        style: TextStyle(
-                                            color: Colors.white, fontSize: 20),
-                                      )),
+                                            "مقدمه",
+                                            style: TextStyle(
+                                                color: Colors.white, fontSize: 20),
+                                          )),
                                     )
                                   ],
                                 ),
@@ -87,10 +87,10 @@ class MatnPage extends StatelessWidget {
                               Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Text(
-                                    "امانت - هر چه باشد - به معناى چيزى است كه نزد غير وديعه بسپارند، تا او آن را براى سپارنده حفظ كند، و سپس به وى برگرداند، و در آيه مورد بحث امانت عبارت است از چيزى كه خداى تعالى آن را به انسان به وديعه سپرده، تا انسان آن را براى خدا حفظ كند، و سالم و مستقيم نگه بدارد، و سپس به صاحبش يعنى خداى سبحان برگرداند",
-                                style: TextStyle(
-                                  fontSize:10
-                                ),),
+                                  "امانت - هر چه باشد - به معناى چيزى است كه نزد غير وديعه بسپارند، تا او آن را براى سپارنده حفظ كند، و سپس به وى برگرداند، و در آيه مورد بحث امانت عبارت است از چيزى كه خداى تعالى آن را به انسان به وديعه سپرده، تا انسان آن را براى خدا حفظ كند، و سالم و مستقيم نگه بدارد، و سپس به صاحبش يعنى خداى سبحان برگرداند",
+                                  style: TextStyle(
+                                      fontSize:10
+                                  ),),
                               ),
                               Stack(
                                 children: [
@@ -99,20 +99,20 @@ class MatnPage extends StatelessWidget {
                                     padding: const EdgeInsets.only(top: 10),
                                     child: Center(
                                         child: Text(
-                                      "مقدمه",
-                                      style: TextStyle(
-                                          color: Colors.white, fontSize: 20),
-                                    )),
+                                          "مقدمه",
+                                          style: TextStyle(
+                                              color: Colors.white, fontSize: 20),
+                                        )),
                                   )
                                 ],
                               ),
                               Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Text(
-                                    "امانت - هر چه باشد - به معناى چيزى است كه نزد غير وديعه بسپارند، تا او آن را براى سپارنده حفظ كند، و سپس به وى برگرداند، و در آيه مورد بحث امانت عبارت است از چيزى كه خداى تعالى آن را به انسان به وديعه سپرده، تا انسان آن را براى خدا حفظ كند، و سالم و مستقيم نگه بدارد، و سپس به صاحبش يعنى خداى سبحان برگرداند",
-                                style: TextStyle(
-                                  fontSize: 10
-                                ),),
+                                  "امانت - هر چه باشد - به معناى چيزى است كه نزد غير وديعه بسپارند، تا او آن را براى سپارنده حفظ كند، و سپس به وى برگرداند، و در آيه مورد بحث امانت عبارت است از چيزى كه خداى تعالى آن را به انسان به وديعه سپرده، تا انسان آن را براى خدا حفظ كند، و سالم و مستقيم نگه بدارد، و سپس به صاحبش يعنى خداى سبحان برگرداند",
+                                  style: TextStyle(
+                                      fontSize: 10
+                                  ),),
                               ),
                               Stack(
                                 children: [
@@ -121,20 +121,20 @@ class MatnPage extends StatelessWidget {
                                     padding: const EdgeInsets.only(top: 10),
                                     child: Center(
                                         child: Text(
-                                      "مقدمه",
-                                      style: TextStyle(
-                                          color: Colors.white, fontSize: 20),
-                                    )),
+                                          "مقدمه",
+                                          style: TextStyle(
+                                              color: Colors.white, fontSize: 20),
+                                        )),
                                   )
                                 ],
                               ),
                               Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Text(
-                                    "امانت - هر چه باشد - به معناى چيزى است كه نزد غير وديعه بسپارند، تا او آن را براى سپارنده حفظ كند، و سپس به وى برگرداند، و در آيه مورد بحث امانت عبارت است از چيزى كه خداى تعالى آن را به انسان به وديعه سپرده، تا انسان آن را براى خدا حفظ كند، و سالم و مستقيم نگه بدارد، و سپس به صاحبش يعنى خداى سبحان برگرداند",
-                                style: TextStyle(
-                                  fontSize: 10
-                                ),
+                                  "امانت - هر چه باشد - به معناى چيزى است كه نزد غير وديعه بسپارند، تا او آن را براى سپارنده حفظ كند، و سپس به وى برگرداند، و در آيه مورد بحث امانت عبارت است از چيزى كه خداى تعالى آن را به انسان به وديعه سپرده، تا انسان آن را براى خدا حفظ كند، و سالم و مستقيم نگه بدارد، و سپس به صاحبش يعنى خداى سبحان برگرداند",
+                                  style: TextStyle(
+                                      fontSize: 10
+                                  ),
                                 ),
                               ),
                               Padding(
