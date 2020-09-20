@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_proje/MyDrawer.dart';
 
-class MatnPage extends StatelessWidget {
+class AlajPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
