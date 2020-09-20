@@ -17,7 +17,6 @@ class _ClipPageState extends State<ClipPage> {
   @override
   void initState() {
     items = Res.fetchGonahVideoUrls(gonahId);
-    // TODO: implement initState
     super.initState();
   }
 
