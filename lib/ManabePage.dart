@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_proje/MyDrawer.dart';
 
-class ClipPage extends StatelessWidget {
+class ManabePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -50,15 +50,14 @@ class ClipPage extends StatelessWidget {
                     ),
                     Expanded(
                       flex: 8,
-                      child: GridView.count(crossAxisCount: 1,
+                      child: GridView.count(
+                        crossAxisCount: 1,
                         childAspectRatio: 2.6,
-
                         children: [
                           ...List.generate(20, (index) => clipkadr()),
-
-                        ],),
+                        ],
+                      ),
                     ),
-
                   ],
                 ),
               ]),
@@ -69,9 +68,9 @@ class ClipPage extends StatelessWidget {
     return Container(
       child: Center(
           child: Text(
-            title,
-            style: TextStyle(color: Color(0xffad3434)),
-          )),
+        title,
+        style: TextStyle(color: Color(0xffad3434)),
+      )),
       height: 31.0,
       width: 60,
       decoration: BoxDecoration(
@@ -90,8 +89,7 @@ class ClipPage extends StatelessWidget {
 
   Widget clipkadr() {
     return Padding(
-      padding: const EdgeInsets.only(right: 40,left: 40, top: 10,bottom: 10),
-
+      padding: const EdgeInsets.only(right: 40, left: 40, top: 10, bottom: 10),
       child: Container(
         width: 67.0,
         height: 31.0,
@@ -109,13 +107,12 @@ class ClipPage extends StatelessWidget {
         child: Row(
           children: [
             Padding(
-              padding: const EdgeInsets.only(right:15,top: 10, bottom: 10),
+              padding: const EdgeInsets.only(right: 15, top: 10, bottom: 10),
               child: Container(
                 height: 120,
                 width: 90,
                 decoration: BoxDecoration(
-                  borderRadius:
-                  BorderRadius.circular(9.0),
+                  borderRadius: BorderRadius.circular(9.0),
                   color: const Color(0xffffffff),
                   boxShadow: [
                     BoxShadow(
@@ -127,39 +124,32 @@ class ClipPage extends StatelessWidget {
                 ),
               ),
             ),
-
-            Column(children: [
-              Text("عنوان"),
-              Text("عنوان"),
-              Padding(
-                padding: const EdgeInsets.only(right: 50),
-                child: Container(
-                  height: 30,
-                  width: 80,
-                  decoration: BoxDecoration(
-                    borderRadius:
-                    BorderRadius.circular(9.0),
-                    color: const Color(0xbdffffff),
-                    boxShadow: [
-                      BoxShadow(
-                        color: const Color(0x29000000),
-                        offset: Offset(0, 3),
-                        blurRadius: 6,
-                      ),
-                    ],
+            Column(
+              children: [
+                Text(
+                  "عنوان",
+                  style: TextStyle(
+                    fontFamily: 'B Ferdosi',
+                    fontSize: 35,
+                    color: const Color(0xff707070),
                   ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      Icon(Icons.share, color: Colors.grey[600],),
-                      Icon(Icons.file_download, color: Colors.grey[600],)
-                    ],
-
-                  ),
+                  textAlign: TextAlign.right,
                 ),
-              )
-            ],
-
+                Text("نویسنده",
+                  style: TextStyle(
+                    fontFamily: 'B Hamid',
+                    fontSize: 20,
+                    color: const Color(0xff707070),
+                  ),
+                  textAlign: TextAlign.right,),
+                Text("ناشر",
+                  style: TextStyle(
+                    fontFamily: 'B Hamid',
+                    fontSize: 20,
+                    color: const Color(0xff707070),
+                  ),
+                  textAlign: TextAlign.right,),
+              ],
             ),
           ],
         ),
