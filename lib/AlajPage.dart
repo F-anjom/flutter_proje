@@ -71,12 +71,12 @@ class MatnPage extends StatelessWidget {
                                 padding: const EdgeInsets.only(top: 10),
                                 child: Stack(
                                   children: [
-                                    Image.asset("assets/images/asset1.png"),
+                                    Image.asset("assets/images/asset2.png"),
                                     Padding(
                                       padding: const EdgeInsets.only(top: 10),
                                       child: Center(
                                           child: Text(
-                                            "مقدمه",
+                                            "راهکار اول",
                                             style: TextStyle(
                                                 color: Colors.white, fontSize: 20),
                                           )),
@@ -99,7 +99,7 @@ class MatnPage extends StatelessWidget {
                                     padding: const EdgeInsets.only(top: 10),
                                     child: Center(
                                         child: Text(
-                                          "مقدمه",
+                                          "راهکار دوم",
                                           style: TextStyle(
                                               color: Colors.white, fontSize: 20),
                                         )),
@@ -121,7 +121,7 @@ class MatnPage extends StatelessWidget {
                                     padding: const EdgeInsets.only(top: 10),
                                     child: Center(
                                         child: Text(
-                                          "مقدمه",
+                                          "راهکار سوم",
                                           style: TextStyle(
                                               color: Colors.white, fontSize: 20),
                                         )),
