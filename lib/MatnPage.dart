@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_proje/MyDrawer.dart';
+import 'package:flutter_proje/resourses.dart';
 
 class MatnPage extends StatelessWidget {
   @override
@@ -65,90 +66,41 @@ class MatnPage extends StatelessWidget {
                               ),
                             ],
                           ),
-                          child: Column(
+                          child: Stack(
+                            alignment: Alignment.bottomCenter,
                             children: [
-                              Padding(
-                                padding: const EdgeInsets.only(top: 10),
-                                child: Stack(
-                                  children: [
-                                    Image.asset("assets/images/asset1.png"),
-                                    Padding(
-                                      padding: const EdgeInsets.only(top: 10),
-                                      child: Center(
-                                          child: Text(
-                                        "مقدمه",
-                                        style: TextStyle(
-                                            color: Colors.white, fontSize: 20),
-                                      )),
-                                    )
-                                  ],
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Text(
-                                    "امانت - هر چه باشد - به معناى چيزى است كه نزد غير وديعه بسپارند، تا او آن را براى سپارنده حفظ كند، و سپس به وى برگرداند، و در آيه مورد بحث امانت عبارت است از چيزى كه خداى تعالى آن را به انسان به وديعه سپرده، تا انسان آن را براى خدا حفظ كند، و سالم و مستقيم نگه بدارد، و سپس به صاحبش يعنى خداى سبحان برگرداند",
-                                style: TextStyle(
-                                  fontSize:10
-                                ),),
-                              ),
-                              Stack(
+                              ListView(
                                 children: [
-                                  Image.asset("assets/images/asset1.png"),
-                                  Padding(
-                                    padding: const EdgeInsets.only(top: 10),
-                                    child: Center(
-                                        child: Text(
-                                      "مقدمه",
-                                      style: TextStyle(
-                                          color: Colors.white, fontSize: 20),
-                                    )),
-                                  )
+                                  ...List.generate(
+                                      Res.gonahExample.split("\n").length,
+                                      (index) {
+                                        return Res.gonahExample.split("\n")[index].contains("#")?
+                                      titr(
+                                          Res.gonahExample.split("\n")[index].replaceAll("#", "")):
+                                  text(
+                                    Res.gonahExample.split("\n")[index]
+//                                "امانت - هر چه باشد - به معناى چيزى است كه نزد غير وديعه بسپارند، تا او آن را براى سپارنده حفظ كند، و سپس به وى برگرداند، و در آيه مورد بحث امانت عبارت است از چيزى كه خداى تعالى آن را به انسان به وديعه سپرده، تا انسان آن را براى خدا حفظ كند، و سالم و مستقيم نگه بدارد، و سپس به صاحبش يعنى خداى سبحان برگرداند",
+                                  );}),
+
                                 ],
                               ),
                               Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Text(
-                                    "امانت - هر چه باشد - به معناى چيزى است كه نزد غير وديعه بسپارند، تا او آن را براى سپارنده حفظ كند، و سپس به وى برگرداند، و در آيه مورد بحث امانت عبارت است از چيزى كه خداى تعالى آن را به انسان به وديعه سپرده، تا انسان آن را براى خدا حفظ كند، و سالم و مستقيم نگه بدارد، و سپس به صاحبش يعنى خداى سبحان برگرداند",
-                                style: TextStyle(
-                                  fontSize: 10
-                                ),),
-                              ),
-                              Stack(
-                                children: [
-                                  Image.asset("assets/images/asset1.png"),
-                                  Padding(
-                                    padding: const EdgeInsets.only(top: 10),
-                                    child: Center(
-                                        child: Text(
-                                      "مقدمه",
-                                      style: TextStyle(
-                                          color: Colors.white, fontSize: 20),
-                                    )),
-                                  )
-                                ],
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Text(
-                                    "امانت - هر چه باشد - به معناى چيزى است كه نزد غير وديعه بسپارند، تا او آن را براى سپارنده حفظ كند، و سپس به وى برگرداند، و در آيه مورد بحث امانت عبارت است از چيزى كه خداى تعالى آن را به انسان به وديعه سپرده، تا انسان آن را براى خدا حفظ كند، و سالم و مستقيم نگه بدارد، و سپس به صاحبش يعنى خداى سبحان برگرداند",
-                                style: TextStyle(
-                                  fontSize: 10
-                                ),
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(right:8.0,left: 8),
+                                padding:
+                                const EdgeInsets.only(right: 8.0, left: 8),
                                 child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  mainAxisAlignment:
+                                  MainAxisAlignment.spaceBetween,
                                   children: [
                                     Container(
-                                      child: Icon(Icons.assignment,color: Colors.grey[600],),
+                                      child: Icon(
+                                        Icons.assignment,
+                                        color: Colors.grey[600],
+                                      ),
                                       height: 45,
                                       width: 45,
                                       decoration: BoxDecoration(
-                                        borderRadius:
-                                        BorderRadius.all(Radius.elliptical(9999.0, 9999.0)),
+                                        borderRadius: BorderRadius.all(
+                                            Radius.elliptical(9999.0, 9999.0)),
                                         color: const Color(0xffffffff),
                                         boxShadow: [
                                           BoxShadow(
@@ -160,12 +112,15 @@ class MatnPage extends StatelessWidget {
                                       ),
                                     ),
                                     Container(
-                                      child: Icon(Icons.settings,color: Colors.grey[600],),
+                                      child: Icon(
+                                        Icons.settings,
+                                        color: Colors.grey[600],
+                                      ),
                                       height: 45,
                                       width: 45,
                                       decoration: BoxDecoration(
-                                        borderRadius:
-                                        BorderRadius.all(Radius.elliptical(9999.0, 9999.0)),
+                                        borderRadius: BorderRadius.all(
+                                            Radius.elliptical(9999.0, 9999.0)),
                                         color: const Color(0xffffffff),
                                         boxShadow: [
                                           BoxShadow(
@@ -179,24 +134,25 @@ class MatnPage extends StatelessWidget {
                                   ],
                                 ),
                               ),
+
                             ],
                           ),
-
                         ),
                       ),
                     ),
                   ],
                 ),
-              ]
-              ),
-            )
-        )
-    );
+              ]),
+            )));
   }
 
   Widget kadr({String title = ""}) {
     return Container(
-      child: Center(child: Text(title,style: TextStyle(color: Color(0xffad3434)),)),
+      child: Center(
+          child: Text(
+        title,
+        style: TextStyle(color: Color(0xffad3434)),
+      )),
       height: 31.0,
       width: 60,
       decoration: BoxDecoration(
@@ -209,6 +165,33 @@ class MatnPage extends StatelessWidget {
             blurRadius: 6,
           ),
         ],
+      ),
+    );
+  }
+
+  titr([title = "تیتر"]) {
+    return Padding(
+      padding: const EdgeInsets.only(top: 10),
+      child: Stack(
+        alignment: Alignment.center,
+        children: [
+          Image.asset("assets/images/asset1.png"),
+          Center(
+              child: Text(
+            title,
+            style: TextStyle(color: Colors.white, fontSize: 16),
+          ))
+        ],
+      ),
+    );
+  }
+
+  text([text = "خالی"]) {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Text(
+        text,
+        style: TextStyle(fontSize: 10),
       ),
     );
   }

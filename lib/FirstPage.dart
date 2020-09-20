@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_proje/ClipPage.dart';
 import 'package:flutter_proje/MyDrawer.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_proje/TasvirPage.dart';
+import 'package:flutter_proje/resourses.dart';
 
 class FirstPage extends StatelessWidget {
   @override
@@ -39,38 +42,48 @@ class FirstPage extends StatelessWidget {
                         childAspectRatio: 1.3,
                         children: List.generate(
                             gonahan.length,
-                            (index) => Padding(
-                                  padding: const EdgeInsets.only(
-                                      left: 10.0,
-                                      right: 10,
-                                      top: 14,
-                                      bottom: 14),
-                                  child: Container(
-                                    child: Center(
-                                      child: Text(
-                                        gonahan[index],
+                            (index) => GestureDetector(
+                              onTap: (){
+                                Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) => TasvirPage(),
+                                          ),
+                                        );
+                              },
+                              child: Padding(
+                                    padding: const EdgeInsets.only(
+                                        left: 10.0,
+                                        right: 10,
+                                        top: 14,
+                                        bottom: 14),
+                                    child: Container(
+                                      child: Center(
+                                        child: Text(
+                                          gonahan[index],
+                                        ),
                                       ),
+                                      width: 50,
+                                      height: 10,
+                                      decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.circular(11),
+                                          gradient: RadialGradient(
+                                            center: Alignment(0.0, 0.0),
+                                            radius: 0.5,
+                                            colors: [
+                                              const Color(0xffe8dede),
+                                              const Color(0xffe9d0d0),
+                                              const Color(0xffebcc85)
+                                            ],
+                                          )),
                                     ),
-                                    width: 50,
-                                    height: 10,
-                                    decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(11),
-                                        gradient: RadialGradient(
-                                          center: Alignment(0.0, 0.0),
-                                          radius: 0.5,
-                                          colors: [
-                                            const Color(0xffe8dede),
-                                            const Color(0xffe9d0d0),
-                                            const Color(0xffebcc85)
-                                          ],
-                                        )),
                                   ),
-                                )),
+                            )),
                       ),
                     ))
               ],
             )));
   }
 
-  var gonahan = ["دوغ", "غیبت", "ظلم", "قتل", "", "", "", "", "", "تهمت"];
+  var gonahan = Res.ghonaha();// ["دوغ", "غیبت", "ظلم", "قتل", "", "", "", "", "", "تهمت"];
 }

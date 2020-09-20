@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_proje/App.dart';
 import 'package:flutter_proje/ClipPage.dart';
 import 'package:flutter_proje/DarbarehMaa.dart';
 import 'package:flutter_proje/ErsalSoal.dart';
@@ -9,7 +10,7 @@ import 'package:flutter_proje/SotPage.dart';
 import 'package:flutter_proje/TasvirPage.dart';
 
 void main() {
-  runApp(SotPage());
+  runApp(App());
 }
 
 class MyApp extends StatelessWidget {
