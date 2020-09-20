@@ -22,85 +22,25 @@ class _ClipPageState extends State<ClipPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          title: Text(
-            "غیبت",
-            textAlign: TextAlign.right,
-          ),
-          backgroundColor: Color(0xffad3434),
-        ),
-        drawer: MyDrawer(),
-        body: Container(
-          width: double.infinity,
-          child: Stack(children: [
-            Image.asset(
-              "assets/images/backgrandimage.png",
-              repeat: ImageRepeat.repeat,
-              width: double.infinity,
-              height: double.infinity,
-            ),
-            Column(
-              children: [
-                Expanded(
-                  flex: 1,
-                  child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        kadr(title: "متن"),
-                        kadr(title: "تصویر"),
-                        kadr(title: "کلیپ"),
-                        kadr(title: "صوتی"),
-                        kadr(title: "صوت")
-                      ]),
-                ),
-                Expanded(
-                  flex: 8,
-                  child: FutureBuilder(
-                      future: items,
-                      builder: (context, snapshot) {
+    return FutureBuilder(
+        future: items,
+        builder: (context, snapshot) {
+          if(!snapshot.hasData) return Center(child: CircularProgressIndicator());
 //                      print((snapshot.data[0] as String).replaceAll('mp4', 'png'));
-                        return GridView.count(
-                          crossAxisCount: 1,
-                          childAspectRatio: 2.6,
-                          children: [
-                            ...List.generate(
-                                snapshot.data.length,
-                                (index) => clipkadr(
-                                    (snapshot.data[index] as String)
-                                        )),
-                          ],
-                        );
-                      }),
-                ),
-              ],
-            ),
-          ]),
-        ));
+          return GridView.count(
+            crossAxisCount: 1,
+            childAspectRatio: 2.6,
+            children: [
+              ...List.generate(
+                  snapshot.data.length,
+                      (index) => clipkadr(
+                      (snapshot.data[index] as String)
+                  )),
+            ],
+          );
+        });
   }
 
-  Widget kadr({String title = ""}) {
-    return Container(
-      child: Center(
-          child: Text(
-        title,
-        style: TextStyle(color: Color(0xffad3434)),
-      )),
-      height: 31.0,
-      width: 60,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(8),
-        color: const Color(0xbdffffff),
-        boxShadow: [
-          BoxShadow(
-            color: const Color(0x29000000),
-            offset: Offset(0, 3),
-            blurRadius: 6,
-          ),
-        ],
-      ),
-    );
-  }
 
   Widget clipkadr(String name) {
     return Padding(

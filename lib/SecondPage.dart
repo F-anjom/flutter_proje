@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_proje/AlajPage.dart';
+import 'package:flutter_proje/ClipPage.dart';
+import 'package:flutter_proje/ManabePage.dart';
 import 'package:flutter_proje/MatnPage.dart';
 import 'package:flutter_proje/MyDrawer.dart';
+import 'package:flutter_proje/SotPage.dart';
+import 'package:flutter_proje/TasvirPage.dart';
 
 class SecondPage extends StatefulWidget {
   @override
@@ -8,6 +13,15 @@ class SecondPage extends StatefulWidget {
 }
 
 class _SecondPageState extends State<SecondPage> {
+  var index = 0;
+  var pages = [
+    MatnPage(),
+    TasvirPage(),
+    ClipPage(),
+    SotPage(),
+    AlajPage(),
+    ManabePage()
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,21 +44,23 @@ class _SecondPageState extends State<SecondPage> {
             ),
             Column(
               children: [
-                Expanded(
-                  flex: 1,
-                  child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                Container(
+                  height: 50,
+                  child: ListView(
+                      shrinkWrap: true,
+//                    padding: EdgeInsets.all(22),
+                    scrollDirection: Axis.horizontal,
                       children: [
-                        kadr(title: "متن"),
-                        kadr(title: "تصویر"),
-                        kadr(title: "کلیپ"),
-                        kadr(title: "صوتی"),
-                        kadr(title: "صوت")
+                        kadr(0, title: "متن"),
+                        kadr(1,title: "تصویر"),
+                        kadr(2,title: "کلیپ"),
+                        kadr(3, title: "صوتی"),
+                        kadr(4, title: "علاج"),
+                        kadr(5, title: "منابع"),
                       ]),
                 ),
                 Expanded(
-                  flex: 8,
-                  child: MatnPage()
+                  child: pages[index]
                 ),
               ],
             ),
@@ -55,21 +71,31 @@ class _SecondPageState extends State<SecondPage> {
   }
 
 
-  Widget kadr({String title = ""}) {
-    return Container(
-      child: Center(child: Text(title,style: TextStyle(color: Color(0xffad3434)),)),
-      height: 31.0,
-      width: 60,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(6.0),
-        color: const Color(0xbdffffff),
-        boxShadow: [
-          BoxShadow(
-            color: const Color(0x29000000),
-            offset: Offset(0, 3),
-            blurRadius: 6,
+  Widget kadr(id, {String title = ""}) {
+    return GestureDetector(
+      onTap: (){
+        setState(() {
+          index = id;
+        });
+      },
+      child: Align(
+        child: Container(
+          margin: EdgeInsets.all(6),
+          child: Center(child: Text(title,style: TextStyle(color: Color(0xffad3434)),)),
+          height: 35.0,
+          width: 60,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(6.0),
+            color: index == id? const Color(0xf1ff9875) :  const Color(0xfaffffff),
+            boxShadow: [
+              BoxShadow(
+                color: const Color(0x29000000),
+                offset: Offset(0, 3),
+                blurRadius: 6,
+              ),
+            ],
           ),
-        ],
+        ),
       ),
     );
   }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_proje/ClipPage.dart';
 import 'package:flutter_proje/MyDrawer.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_proje/SecondPage.dart';
 import 'package:flutter_proje/TasvirPage.dart';
 import 'package:flutter_proje/resourses.dart';
 
@@ -18,7 +19,11 @@ class FirstPage extends StatelessWidget {
         ],
         locale: Locale("fa", "IR"),
         home: Scaffold(
-            appBar: AppBar(),
+          backgroundColor: Colors.redAccent.withAlpha(211),
+            appBar: AppBar(
+              backgroundColor: Colors.transparent,
+              shadowColor: Colors.transparent,
+            ),
             drawer: MyDrawer(),
             body: Column(
               children: [
@@ -28,7 +33,7 @@ class FirstPage extends StatelessWidget {
                     padding: const EdgeInsets.only(top: 40),
                     child: Text(
                       "گناهان کبیره",
-                      style: TextStyle(fontSize: 50, color: Colors.grey),
+                      style: TextStyle(fontSize: 50, color: Colors.grey.withRed(255),shadows: [Shadow(blurRadius: 3, color: Colors.black26)]),
                       textAlign: TextAlign.center,
                     ),
                   ),
@@ -47,7 +52,7 @@ class FirstPage extends StatelessWidget {
                                 Navigator.push(
                                           context,
                                           MaterialPageRoute(
-                                            builder: (context) => TasvirPage(),
+                                            builder: (context) => SecondPage(),
                                           ),
                                         );
                               },
