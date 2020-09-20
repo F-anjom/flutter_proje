@@ -101,69 +101,74 @@ class SotPage extends StatelessWidget {
             ),
           ],
         ),
-        child: Padding(
-          padding: const EdgeInsets.only(right: 10),
-          child: Row(
-            children: [
-              Text("1."),
-              Padding(
-                padding: const EdgeInsets.only(right:8.0),
-                child: Column(
-                  children: [
-                    Text(
-                      'سخنرانی',
-                      style: TextStyle(
-                        fontFamily: 'B Baran',
-                        fontSize: 12,
-                        color: const Color(0xffad9f9f),
-                      ),
-                      textAlign: TextAlign.right,
-                    ),
-                    Text(
-                      'عنوان',
-                      style: TextStyle(
-                        fontFamily: 'B Ferdosi',
-                        fontSize: 35,
-                        color: const Color(0xff707070),
-                      ),
-                      textAlign: TextAlign.right,
-                    ),
-                  ],
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+        Row(
+          children: [
+            Text("1."),
+            Column(
+//              mainAxisAlignment: MainAxisAlignment.,
+              children: [
+                Text(
+                  'سخنرانی',
+                  style: TextStyle(
+                    fontFamily: 'B Baran',
+                    fontSize: 12,
+                    color: const Color(0xffad9f9f),
+                  ),
+                  textAlign: TextAlign.right,
                 ),
-              ),
-              Container(
-                child: Icon(Icons.share, color: Colors.grey,),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.all(
-                      Radius.elliptical(9999.0, 9999.0)),
-                  color: const Color(0xffffffff),
-                  boxShadow: [
-                    BoxShadow(
-                      color: const Color(0x29000000),
-                      offset: Offset(1, 1),
-                      blurRadius: 0,
-                    ),
-                  ],
+                Text(
+                  'عنوان',
+                  style: TextStyle(
+                    fontFamily: 'B Ferdosi',
+                    fontSize: 35,
+                    color: const Color(0xff707070),
+                    height: 0.8
+                  ),
+                  textAlign: TextAlign.right,
                 ),
-              ),
-              Container(
-                height: 40,
-                width: 40,
-                child: Icon(Icons.play_arrow, color: Colors.white,),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.all(
-                      Radius.elliptical(9999.0, 9999.0)),
-                  color: const Color(0xff60b44b),
-                  boxShadow: [
-                    BoxShadow(
-                      color: const Color(0x29000000),
-                      offset: Offset(1, 1),
-                      blurRadius: 0,
-                    ),
-                  ],
-                ),)
-            ],
-          ),
+              ],
+            ),
+          ],
+        ),
+           Row(
+             children: [
+               Container(
+                 child: Icon(Icons.share, color: Colors.grey,),
+                 decoration: BoxDecoration(
+                   borderRadius: BorderRadius.all(
+                       Radius.elliptical(9999.0, 9999.0)),
+                   color: const Color(0xffffffff),
+                   boxShadow: [
+                     BoxShadow(
+                       color: const Color(0x29000000),
+                       offset: Offset(1, 1),
+                       blurRadius: 0,
+                     ),
+                   ],
+                 ),
+               ),
+               Container(
+                 height: 40,
+                 width: 40,
+                 child: Icon(Icons.play_arrow, color: Colors.white,),
+                 decoration: BoxDecoration(
+                   borderRadius: BorderRadius.all(
+                       Radius.elliptical(9999.0, 9999.0)),
+                   color: const Color(0xff60b44b),
+                   boxShadow: [
+                     BoxShadow(
+                       color: const Color(0x29000000),
+                       offset: Offset(1, 1),
+                       blurRadius: 0,
+                     ),
+                   ],
+                 ),)
+             ],
+           )
+          ],
         ),
       ),
     );

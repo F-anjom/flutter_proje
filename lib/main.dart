@@ -9,7 +9,7 @@ import 'package:flutter_proje/SotPage.dart';
 import 'package:flutter_proje/TasvirPage.dart';
 
 void main() {
-  runApp(ClipPage());
+  runApp(SotPage());
 }
 
 class MyApp extends StatelessWidget {
