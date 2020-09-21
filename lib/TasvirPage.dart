@@ -1,19 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_proje/MyDrawer.dart';
+import 'package:flutter_proje/db.dart';
 import 'package:flutter_proje/resourses.dart';
 
 class TasvirPage extends StatefulWidget {
+  final Gonah gonah;
+  TasvirPage(this.gonah);
+
   @override
   _TasvirPageState createState() => _TasvirPageState();
 }
 
 class _TasvirPageState extends State<TasvirPage> {
-  int gonahId = 1;
+  int gonahId;
   Future images;
 
   @override
   void initState() {
+    gonahId = widget.gonah.id;
     images = Res.fetchGonahImageUrls(gonahId);
     super.initState();
   }

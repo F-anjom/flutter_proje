@@ -6,22 +6,37 @@ import 'package:flutter_proje/MatnPage.dart';
 import 'package:flutter_proje/MyDrawer.dart';
 import 'package:flutter_proje/SotPage.dart';
 import 'package:flutter_proje/TasvirPage.dart';
+import 'package:flutter_proje/db.dart';
 
 class SecondPage extends StatefulWidget {
+  int gonahId;
+
+  SecondPage(this.gonahId);
   @override
   _SecondPageState createState() => _SecondPageState();
 }
 
 class _SecondPageState extends State<SecondPage> {
   var index = 0;
-  var pages = [
-    MatnPage(),
-    TasvirPage(),
-    ClipPage(),
-    SotPage(),
-    AlajPage(),
-    ManabePage()
-  ];
+//  List<Widget> pages;
+  @override
+  void initState() {
+
+    super.initState();
+  }
+
+  Future<void> lol () async {
+    var d  = await Gonah.byId(widget.gonahId).then((value) => Gonah.fromJson(value.first));
+
+    return [
+      MatnPage(d),
+      TasvirPage(d),
+      ClipPage(d),
+      SotPage(d),
+      AlajPage(d),
+      ManabePage(d)
+    ];
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -60,7 +75,13 @@ class _SecondPageState extends State<SecondPage> {
                       ]),
                 ),
                 Expanded(
-                  child: pages[index]
+                  child: FutureBuilder(
+                    future: lol(),
+                    builder: (context, snapshot) {
+                      if(!snapshot.hasData)return Center(child: CircularProgressIndicator());
+                      return snapshot.data[index];
+                    }
+                  )
                 ),
               ],
             ),

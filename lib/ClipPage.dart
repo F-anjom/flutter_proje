@@ -3,9 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_proje/MyDrawer.dart';
 import 'package:flutter_proje/VideoShowPage.dart';
+import 'package:flutter_proje/db.dart';
 import 'package:flutter_proje/resourses.dart';
 
 class ClipPage extends StatefulWidget {
+  final Gonah gonah;
+  ClipPage(this.gonah);
+
   @override
   _ClipPageState createState() => _ClipPageState();
 }
@@ -16,6 +20,7 @@ class _ClipPageState extends State<ClipPage> {
 
   @override
   void initState() {
+    gonahId = widget.gonah.id;
     items = Res.fetchGonahVideoUrls(gonahId);
     super.initState();
   }
@@ -94,46 +99,47 @@ class _ClipPageState extends State<ClipPage> {
               ),
             ),
             Column(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Container(
                     width: 160,
                     padding: EdgeInsets.all(10),
                     child: Text(
-                      name,
+                      name.substring(0, name.indexOf(".")),
                       overflow: TextOverflow.ellipsis,
                     )),
-                Text("عنوان"),
-                Padding(
-                  padding: const EdgeInsets.only(right: 50),
-                  child: Container(
-                    height: 30,
-                    width: 80,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(9.0),
-                      color: const Color(0xbdffffff),
-                      boxShadow: [
-                        BoxShadow(
-                          color: const Color(0x29000000),
-                          offset: Offset(0, 3),
-                          blurRadius: 6,
-                        ),
-                      ],
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        Icon(
-                          Icons.share,
-                          color: Colors.grey[600],
-                        ),
-                        Icon(
-                          Icons.file_download,
-                          color: Colors.grey[600],
-                        )
-                      ],
-                    ),
-                  ),
-                )
+//                Text("عنوان"),
+//                Padding(
+//                  padding: const EdgeInsets.only(right: 50),
+//                  child: Container(
+//                    height: 30,
+//                    width: 80,
+//                    decoration: BoxDecoration(
+//                      borderRadius: BorderRadius.circular(9.0),
+//                      color: const Color(0xbdffffff),
+//                      boxShadow: [
+//                        BoxShadow(
+//                          color: const Color(0x29000000),
+//                          offset: Offset(0, 3),
+//                          blurRadius: 6,
+//                        ),
+//                      ],
+//                    ),
+//                    child: Row(
+//                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+//                      children: [
+//                        Icon(
+//                          Icons.share,
+//                          color: Colors.grey[600],
+//                        ),
+//                        Icon(
+//                          Icons.file_download,
+//                          color: Colors.grey[600],
+//                        )
+//                      ],
+//                    ),
+//                  ),
+//                )
               ],
             ),
           ],

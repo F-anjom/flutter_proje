@@ -4,9 +4,21 @@ import 'package:flutter_proje/MyDrawer.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_proje/SecondPage.dart';
 import 'package:flutter_proje/TasvirPage.dart';
-import 'package:flutter_proje/resourses.dart';
+import 'package:flutter_proje/db.dart';
 
-class FirstPage extends StatelessWidget {
+class FirstPage extends StatefulWidget {
+  @override
+  _FirstPageState createState() => _FirstPageState();
+}
+
+class _FirstPageState extends State<FirstPage> {
+  Future titles;
+  @override
+  void initState() {
+    titles = Gonah.titlesAndIds();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(localizationsDelegates: [
@@ -19,7 +31,7 @@ class FirstPage extends StatelessWidget {
         ],
         locale: Locale("fa", "IR"),
         home: Scaffold(
-          backgroundColor: Colors.redAccent.withAlpha(211),
+            backgroundColor: Colors.redAccent.withAlpha(211),
             appBar: AppBar(
               backgroundColor: Colors.transparent,
               shadowColor: Colors.transparent,
@@ -40,23 +52,27 @@ class FirstPage extends StatelessWidget {
                 ),
                 Expanded(
                     flex: 3,
-                    child: Padding(
-                      padding: const EdgeInsets.only(right: 10, left: 10),
-                      child: GridView.count(
-                        crossAxisCount: 3,
-                        childAspectRatio: 1.3,
-                        children: List.generate(
-                            gonahan.length,
-                            (index) => GestureDetector(
-                              onTap: (){
-                                Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                            builder: (context) => SecondPage(),
-                                          ),
-                                        );
-                              },
-                              child: Padding(
+                    child: FutureBuilder(
+                      future: titles,
+                      builder: (context, snapshot) {
+                        var items = (snapshot.data as List<Map<String, dynamic>>);
+                        return Padding(
+                          padding: const EdgeInsets.only(right: 10, left: 10),
+                          child: GridView.count(
+                            crossAxisCount: 3,
+                            childAspectRatio: 1.3,
+                            children: List.generate(
+                                items.length,
+                                    (index) => GestureDetector(
+                                  onTap: (){
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => SecondPage(items[index]["id"]),
+                                      ),
+                                    );
+                                  },
+                                  child: Padding(
                                     padding: const EdgeInsets.only(
                                         left: 10.0,
                                         right: 10,
@@ -65,7 +81,7 @@ class FirstPage extends StatelessWidget {
                                     child: Container(
                                       child: Center(
                                         child: Text(
-                                          gonahan[index],
+                                          items[index]['title'],
                                         ),
                                       ),
                                       width: 50,
@@ -83,12 +99,15 @@ class FirstPage extends StatelessWidget {
                                           )),
                                     ),
                                   ),
-                            )),
-                      ),
+                                )),
+                          ),
+                        );
+                      }
                     ))
               ],
             )));
   }
 
-  var gonahan = Res.ghonaha();// ["دوغ", "غیبت", "ظلم", "قتل", "", "", "", "", "", "تهمت"];
+//  var gonahan = Res.ghonaha();// ["دوغ", "غیبت", "ظلم", "قتل", "", "", "", "", "", "تهمت"];
 }
+

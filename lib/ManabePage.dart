@@ -1,21 +1,46 @@
+import 'dart:convert';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_proje/MyDrawer.dart';
+import 'package:flutter_proje/db.dart';
 
-class ManabePage extends StatelessWidget {
+
+class ManabePage extends StatefulWidget {
+  final Gonah gonah;
+  ManabePage(this.gonah);
+
+  @override
+  _ManabePageState createState() => _ManabePageState();
+}
+
+class _ManabePageState extends State<ManabePage> {
+
+  @override
+  void initState() {
+    String dbPath = 'sample.db';
+//    DatabaseFactory
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
+//    var ow = (widget.gonah.resources);
+//    return Text(ow);
+//    print(ow);
+    var items = json.decode(utf8.decode(utf8.encode(widget.gonah.resources)));
+    print(items);
     return GridView.count(
       crossAxisCount: 1,
       childAspectRatio: 2.6,
       children: [
-        ...List.generate(20, (index) => clipkadr()),
+        ...List.generate(items.length, (index) => clipkadr(items[index])),
       ],
     );
   }
 
-  Widget clipkadr() {
+  Widget clipkadr(item) {
     return Padding(
       padding: const EdgeInsets.only(right: 40, left: 40, top: 10, bottom: 10),
       child: Container(
@@ -50,34 +75,68 @@ class ManabePage extends StatelessWidget {
                     ),
                   ],
                 ),
+                child: Image.network(
+                  "http://shahidchegini.ir/app_kabireh/manabeImgs/${item['img_url']}".replaceAll('mp4', 'png'),
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
-            Column(
-              children: [
-                Text(
-                  "عنوان",
-                  style: TextStyle(
-                    fontFamily: 'B Ferdosi',
-                    fontSize: 35,
-                    color: const Color(0xff707070),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    item['title'],
+                    style: TextStyle(
+                      fontFamily: 'B Ferdosi',
+                      fontSize: 22,
+                      color: Colors.black// const Color(0xff707070),
+                    ),
+                    textAlign: TextAlign.right,
                   ),
-                  textAlign: TextAlign.right,
-                ),
-                Text("نویسنده",
-                  style: TextStyle(
-                    fontFamily: 'B Hamid',
-                    fontSize: 20,
-                    color: const Color(0xff707070),
+                  Row(
+                    children: [
+                      Text(
+                        "نویسنده: ",
+                        style: TextStyle(
+                          fontFamily: 'B Hamid',
+                          fontSize: 14,
+                          color: const Color(0xff707070),
+                        ),
+                        textAlign: TextAlign.right,),
+                      Text(
+                        item['author'],
+                        style: TextStyle(
+                          fontFamily: 'B Hamid',
+                          fontSize: 14,
+                          color: const Color(0xff202020),
+                        ),
+                        textAlign: TextAlign.right,),
+                    ],
                   ),
-                  textAlign: TextAlign.right,),
-                Text("ناشر",
-                  style: TextStyle(
-                    fontFamily: 'B Hamid',
-                    fontSize: 20,
-                    color: const Color(0xff707070),
-                  ),
-                  textAlign: TextAlign.right,),
-              ],
+                  Row(
+                    children: [
+                      Text(
+                        "ناشر: ",
+                        style: TextStyle(
+                          fontFamily: 'B Hamid',
+                          fontSize: 14,
+                          color: const Color(0xff707070),
+                        ),
+                        textAlign: TextAlign.right,),
+                      Text(
+                        item['publisher'],
+                        style: TextStyle(
+                          fontFamily: 'B Hamid',
+                          fontSize: 14,
+                          color: const Color(0xff202020),
+                        ),
+                        textAlign: TextAlign.right,),
+                    ],
+                  )
+                ],
+              ),
             ),
           ],
         ),
@@ -85,3 +144,4 @@ class ManabePage extends StatelessWidget {
     );
   }
 }
+
