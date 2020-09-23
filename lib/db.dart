@@ -1,5 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
+import 'dart:typed_data';
+import 'package:flutter/services.dart';
 import 'package:flutter_proje/resourses.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
@@ -35,9 +37,25 @@ class DB {
   // SQL code to create the database table
   Future _onCreate(Database db, int version) async {
     await Gonah.onCreate(db);
+    await initCopyData();
+  }
 
+  Future<void> initCopyData() async {
+    Directory documentsDirectory = await getApplicationDocumentsDirectory();
+    String path = join(documentsDirectory.path, "MyDatabase.db");
+
+// Only copy if the database doesn't exist
+    if (FileSystemEntity.typeSync(path) == FileSystemEntityType.notFound){
+      // Load database from asset and copy
+      ByteData data = await rootBundle.load(join('assets', 'MyDatabase.db'));
+      List<int> bytes = data.buffer.asUint8List(data.offsetInBytes, data.lengthInBytes);
+
+      // Save copied asset to documents
+      await new File(path).writeAsBytes(bytes);
+    }
   }
 }
+
 
 class Gonah {
   static const String TABLE = "gonah";
@@ -121,6 +139,9 @@ class Gonah {
   static Future<List<Map<String, dynamic>>> all({int limit = 30}) async {
     return (await DB.instance.database).query(TABLE, limit: limit);
   }
+  static Future<List<Map<String, dynamic>>> search({String search = "", int limit = 30}) async {
+    return (await DB.instance.database).query(TABLE, limit: limit, where: "$COLUMN_TEXT like ?", whereArgs: ["%$search%"]);
+  }
 
   static Future<List<Map<String, dynamic>>> ids() async{
     return (await DB.instance.database).rawQuery("SELECT $COLUMN_ID from $TABLE;");
@@ -136,3 +157,4 @@ class Gonah {
   }
 
 }
+

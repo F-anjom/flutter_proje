@@ -1,8 +1,19 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_proje/FirstPage.dart';
 import 'package:flutter_proje/MyDrawer.dart';
+import 'package:intent/extra.dart';
+import 'package:url_launcher/url_launcher.dart';
+//import 'package:android_intent/android_intent.dart';
+import 'package:intent/intent.dart' as android_intent;
+import 'package:intent/action.dart' as android_action;
 
 class ErsalSoal extends StatelessWidget {
+  var topicController = TextEditingController();
+  var textController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -49,6 +60,7 @@ class ErsalSoal extends StatelessWidget {
                       child: Padding(
                         padding: const EdgeInsets.only(right: 5, top: 6),
                         child: TextField(
+                          controller: topicController,
                           cursorColor: Colors.grey[500],
                           decoration: InputDecoration.collapsed(
                             hintText: "موضوع سوال",
@@ -78,6 +90,7 @@ class ErsalSoal extends StatelessWidget {
                         child: Padding(
                           padding: const EdgeInsets.only(right: 5, top: 6),
                           child: TextField(
+                            controller: textController,
                             cursorColor: Colors.grey[500],
                             decoration: InputDecoration.collapsed(
                               hintText: "متن سوال",
@@ -102,40 +115,46 @@ class ErsalSoal extends StatelessWidget {
                   ),
                   Row(
                     children: [
-                      Padding(
-                        padding: const EdgeInsets.only(top: 20,right: 30),
-                        child: Container(
-                          child: Center(child: Text("ارسال")),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(15.0),
-                            color: const Color(0xff17862a),
-                            boxShadow: [
-                              BoxShadow(
-                                color: const Color(0x29000000),
-                                offset: Offset(2, 2),
-                                blurRadius: 2,
-                              ),
-                            ],
-                          ),                          height: 50,
-                          width: 80,
+                      GestureDetector(
+                        onTap: sendMessage,
+                        child: Padding(
+                          padding: const EdgeInsets.only(top: 20,right: 30),
+                          child: Container(
+                            child: Center(child: Text("ارسال")),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(15.0),
+                              color: const Color(0xff17862a),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: const Color(0x29000000),
+                                  offset: Offset(2, 2),
+                                  blurRadius: 2,
+                                ),
+                              ],
+                            ),                          height: 50,
+                            width: 80,
+                          ),
                         ),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.only(right: 20,top: 20),
-                        child: Container(
-                          child: Center(child: Text("لغو")),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(15.0),
-                            color: const Color(0xfff52e2e),
-                            boxShadow: [
-                              BoxShadow(
-                                color: const Color(0x29000000),
-                                offset: Offset(2, 2),
-                                blurRadius: 2,
-                              ),
-                            ],
-                          ),                          height: 50,
-                          width: 80,),
+                      GestureDetector(
+                        onTap: (){Navigator.of(context).pop<FirstPage>();},
+                        child: Padding(
+                          padding: const EdgeInsets.only(right: 20,top: 20),
+                          child: Container(
+                            child: Center(child: Text("لغو")),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(15.0),
+                              color: const Color(0xfff52e2e),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: const Color(0x29000000),
+                                  offset: Offset(2, 2),
+                                  blurRadius: 2,
+                                ),
+                              ],
+                            ),                          height: 50,
+                            width: 80,),
+                        ),
                       )],
                   )
                 ],
@@ -145,5 +164,23 @@ class ErsalSoal extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  sendMessage() async {
+    if(topicController.value.text == "" || textController.value.text == ""){
+      print("please fill topic and text");
+      return;
+    }
+    if(Platform.isAndroid){
+      const uri = 'sms:30009640?sms_body=hello%20there';
+      if (await canLaunch(uri)) {
+        await launch(uri);
+      }
+    }
+    else if(Platform.isIOS){
+      //FOR IOS
+      var url ='sms:30009640&body=message';
+      await launch(url);
+    }
   }
 }

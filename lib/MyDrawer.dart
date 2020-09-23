@@ -1,133 +1,96 @@
+import 'dart:io';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_proje/DarbarehMaa.dart';
+import 'package:flutter_proje/ErsalSoal.dart';
+import 'package:flutter_proje/FirstPage.dart';
+import 'package:flutter_proje/SearchPage.dart';
 
-Widget MyDrawer(){
-  return Drawer(
-    child: ListView(
-      children: [
-        DrawerHeader(
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment(-1.0, 0.08),
-              end: Alignment(1.0, 0.09),
-              colors: [
-                const Color(0xfffff3eb),
-                const Color(0xfff3b1b1),
-                const Color(0xffe76180)
-              ],
-              stops: [0.0, 0.539, 1.0],
-            ),
+class MyDrawer extends StatefulWidget {
+  @override
+  _MyDrawerState createState() => _MyDrawerState();
+}
 
-          ),
-          child: Padding(
-            padding: const EdgeInsets.only(top: 50),
-            child: Text("،شناخت گناهان کبیره و راه های علاج آن\nراهی برای نزدیکتر شدن به خدا",
-              style: TextStyle(
-                fontFamily: 'B Nazanin',
-                fontSize: 18,
-                color: const Color(0xffad3434),
-                fontWeight: FontWeight.w700,
-                shadows: [
-                  Shadow(
-                    color: const Color(0x29000000),
-                    offset: Offset(0, 3),
-                    blurRadius: 6,
-                  )
+class _MyDrawerState extends State<MyDrawer> {
+
+  @override
+  Widget build(BuildContext context) {
+    return Drawer(
+      child: ListView(
+        children: [
+          DrawerHeader(
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment(-1.0, -1.0),
+                end: Alignment(1.0, 1.0),
+                colors: [
+                  const Color(0xfff1e3eb),
+                  const Color(0xfff3b1b1),
+                  const Color(0xffe78180)
                 ],
+                stops: [0.0, 0.4, 1.0],
               ),
-              textAlign: TextAlign.right,),
-          ),
-        ),
-        ListTile(
-          leading: Icon(Icons.assignment,size: 27,color: Color(0xffad3434),textDirection:TextDirection.rtl),
-          title: Text("لیست موارد",
-            style: TextStyle(
-              fontFamily: 'B Baran',
-              fontSize: 27,
-              color: const Color(0xffad3434),
-              shadows: [
-                Shadow(
-                  color: const Color(0x29000000),
-                  offset: Offset(1, 1),
-                )
-              ],
-            ),
-            textAlign: TextAlign.center,
-          ),
-        ),
-        ListTile(
 
+            ),
+            child: Align(
+              alignment: Alignment.bottomRight,
+              child: Text("شناخت گناهان کبیره و راه های علاج آن\nراهی برای نزدیکتر شدن به خدا",
+                style: TextStyle(
+                  fontFamily: 'B Nazanin',
+                  fontSize: 17,
+                  color: const Color(0xffad3434),
+                  fontWeight: FontWeight.w700,
+                  shadows: [
+                    Shadow(
+                      color: const Color(0x29000000),
+                      offset: Offset(0, 3),
+                      blurRadius: 6,
+                    )
+                  ],
+                ),
+                textAlign: TextAlign.right,),
+            ),
+          ),
+          item("گناهان", Icons.assignment, (){open(FirstPage());}),
+          item("جستجو", Icons.search, (){open(SearchPage());}),
+          item("ارسال سوال", Icons.present_to_all, (){open(ErsalSoal());}),
+          item("درباره ما", Icons.description, (){ open(DarbarehMaa());}),
+          item("خروج", Icons.exit_to_app, (){Navigator.of(context).pop();exit(0);}),
 
-          leading: Icon(Icons.search,size: 27,color: Color(0xffad3434),textDirection:TextDirection.rtl ,),
-          title: Text("جستجو",
-            style: TextStyle(
-              fontFamily: 'B Baran',
-              fontSize: 27,
-              color: const Color(0xffad3434),
-              shadows: [
-                Shadow(
-                  color: const Color(0x29000000),
-                  offset: Offset(1, 1),
-                )
-              ],
-            ),
-            textAlign: TextAlign.center,
-          ),
-        ),
-        ListTile(
-          leading: Icon(Icons.present_to_all,size: 27,color: Color(0xffad3434),textDirection:TextDirection.rtl),
-          title: Text("ارسال سوال",
-            style: TextStyle(
-              fontFamily: 'B Baran',
-              fontSize: 27,
-              color: const Color(0xffad3434),
-              shadows: [
-                Shadow(
-                  color: const Color(0x29000000),
-                  offset: Offset(1, 1),
-                )
-              ],
-            ),
-            textAlign: TextAlign.center,
-          ),
-        ),
-        ListTile(
-          leading: Icon(Icons.description,size: 27,color: Color(0xffad3434),textDirection:TextDirection.rtl),
-          title: Text("درباره ی ما",
-            style: TextStyle(
-              fontFamily: 'B Baran',
-              fontSize: 27,
-              color: const Color(0xffad3434),
-              shadows: [
-                Shadow(
-                  color: const Color(0x29000000),
-                  offset: Offset(1, 1),
-                )
-              ],
-            ),
-            textAlign: TextAlign.center,
-          ),
-        ),
-        ListTile(
-          leading: Icon(Icons.exit_to_app,size: 27,color: Color(0xffad3434),textDirection:TextDirection.rtl),
-          title: Text("خروج",
-            style: TextStyle(
-              fontFamily: 'B Baran',
-              fontSize: 27,
-              color: const Color(0xffad3434),
-              shadows: [
-                Shadow(
-                  color: const Color(0x29000000),
-                  offset: Offset(1, 1),
-                )
-              ],
-            ),
-            textAlign: TextAlign.center,
-          ),
-        )
+        ],
+      ),
+    );
+  }
 
+  Widget item([String s = "title", IconData icon = Icons.map, onTap]) {
+    return ListTile(
+      onTap: onTap,
+      leading: Icon(icon,size: 27,color: Color(0xffad3434),textDirection:TextDirection.rtl),
+      title: Text(s,
+        style: TextStyle(
+          fontFamily: 'B Baran',
+          fontSize: 20,
+          color: const Color(0xffad3434),
+          shadows: [
+            Shadow(
+              color: const Color(0x29000000),
+              offset: Offset(1, 1),
+            )
+          ],
+        ),
+        textAlign: TextAlign.start,
+      ),
+    );
+  }
 
-      ],
-    ),
-  );
+  void open(firstPage) {
+    Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => firstPage,
+              ),
+            );
+  }
+
 }

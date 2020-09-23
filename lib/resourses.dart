@@ -13,6 +13,9 @@ class Res {
   }
 
 
+  static Future<dynamic> fetchGonahAudioUrls(int gonahId) async {
+    return fetchGonahUrls('audios', gonahId);
+  }
   static Future<dynamic> fetchGonahImageUrls(int gonahId) async {
     return fetchGonahUrls('imgs', gonahId);
   }
