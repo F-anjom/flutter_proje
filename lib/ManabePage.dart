@@ -2,8 +2,6 @@ import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:flutter_proje/MyDrawer.dart';
 import 'package:flutter_proje/db.dart';
 
 
@@ -26,11 +24,7 @@ class _ManabePageState extends State<ManabePage> {
 
   @override
   Widget build(BuildContext context) {
-//    var ow = (widget.gonah.resources);
-//    return Text(ow);
-//    print(ow);
     var items = json.decode(utf8.decode(utf8.encode(widget.gonah.resources)));
-    print(items);
     return GridView.count(
       crossAxisCount: 1,
       childAspectRatio: 2.6,

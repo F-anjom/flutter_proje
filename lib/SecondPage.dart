@@ -1,3 +1,4 @@
+import 'package:connectivity/connectivity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_proje/AlajPage.dart';
 import 'package:flutter_proje/ClipPage.dart';
@@ -7,6 +8,7 @@ import 'package:flutter_proje/MyDrawer.dart';
 import 'package:flutter_proje/SotPage.dart';
 import 'package:flutter_proje/TasvirPage.dart';
 import 'package:flutter_proje/db.dart';
+import 'package:provider/provider.dart';
 
 class SecondPage extends StatefulWidget {
   int gonahId;
@@ -23,6 +25,7 @@ class _SecondPageState extends State<SecondPage> {
   void initState() {
 
     super.initState();
+    connectedState();
   }
 
   Future<void> lol () async {
@@ -36,6 +39,12 @@ class _SecondPageState extends State<SecondPage> {
       AlajPage(d),
       ManabePage(d)
     ];
+  }
+
+  Future<bool> connectedState() async {
+    var connectivityResult = await (Connectivity().checkConnectivity());
+    return connectivityResult != ConnectivityResult.none;
+    // return con != ConnectivityResult.none;
   }
   @override
   Widget build(BuildContext context) {
@@ -76,10 +85,20 @@ class _SecondPageState extends State<SecondPage> {
                 ),
                 Expanded(
                   child: FutureBuilder(
-                    future: lol(),
-                    builder: (context, snapshot) {
-                      if(!snapshot.hasData)return Center(child: CircularProgressIndicator());
-                      return snapshot.data[index];
+                    future: connectedState(),
+                    builder: (context, snapshotConnected) {
+                      if(snapshotConnected.hasData &&
+                          snapshotConnected.data == false &&
+                          index > 0 && index < 4
+                      )
+                        return checkInternet();
+                      return FutureBuilder(
+                        future: lol(),
+                        builder: (context, snapshot) {
+                          if(!snapshot.hasData)return Center(child: CircularProgressIndicator());
+                          return snapshot.data[index];
+                        }
+                      );
                     }
                   )
                 ),
@@ -119,5 +138,31 @@ class _SecondPageState extends State<SecondPage> {
         ),
       ),
     );
+  }
+
+  Widget checkInternet() {
+    return Center(child: Material(
+      elevation: 8,
+      child: Container(
+        margin: EdgeInsets.symmetric(horizontal: 32, vertical: 16),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                CircularProgressIndicator(),
+                SizedBox(height: 12,),
+                Text("اینترنت چک شود")
+              ],
+            ),
+            SizedBox(width: 64,),
+            Icon(Icons.signal_cellular_connected_no_internet_4_bar, size: 30, color: Colors.red,)
+          ],
+        ),
+      ),
+    ),);
   }
 }

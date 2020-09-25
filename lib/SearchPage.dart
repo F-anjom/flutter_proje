@@ -105,6 +105,5 @@ class _SearchPageState extends State<SearchPage> {
     setState(() {
       gs = gons;
     });
-    print(gs.length);
   }
 }

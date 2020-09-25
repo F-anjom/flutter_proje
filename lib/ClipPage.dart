@@ -31,7 +31,6 @@ class _ClipPageState extends State<ClipPage> {
         future: items,
         builder: (context, snapshot) {
           if(!snapshot.hasData) return Center(child: CircularProgressIndicator());
-//                      print((snapshot.data[0] as String).replaceAll('mp4', 'png'));
           return GridView.count(
             crossAxisCount: 1,
             childAspectRatio: 2.6,

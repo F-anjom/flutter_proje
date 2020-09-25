@@ -31,7 +31,6 @@ class _TasvirPageState extends State<TasvirPage> {
           future: images,
           builder: (context, snapshot) {
             if(!snapshot.hasData) return Center(child: CircularProgressIndicator());
-            print(snapshot.data);
             return GridView.count(
               crossAxisCount: 3,
               childAspectRatio: 1.2,
