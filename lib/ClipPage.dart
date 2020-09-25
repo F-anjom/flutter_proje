@@ -1,7 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:flutter_proje/MyDrawer.dart';
 import 'package:flutter_proje/VideoShowPage.dart';
 import 'package:flutter_proje/db.dart';
 import 'package:flutter_proje/resourses.dart';

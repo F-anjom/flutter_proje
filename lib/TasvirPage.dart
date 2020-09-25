@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:flutter_proje/MyDrawer.dart';
 import 'package:flutter_proje/db.dart';
 import 'package:flutter_proje/resourses.dart';
 
@@ -79,12 +77,12 @@ class _TasvirPageState extends State<TasvirPage> {
     showDialog(
         context: context,
         builder: (ctx) {
-          var newIndex = index;
           return Alertt(index, data, gonahId);
         });
   }
 }
 
+// ignore: must_be_immutable
 class Alertt extends StatefulWidget {
   var index;
   var data;

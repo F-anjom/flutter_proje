@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
 
 class VideoShowPage extends StatefulWidget {
-  var url;
+  final url;
   VideoShowPage(this.url);
   @override
   _VideoShowPageState createState() => _VideoShowPageState();

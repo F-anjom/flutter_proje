@@ -1,8 +1,5 @@
-import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:flutter_proje/MyDrawer.dart';
 import 'package:flutter_proje/db.dart';
 import 'package:flutter_proje/resourses.dart';
 import 'package:just_audio/just_audio.dart';
@@ -162,6 +159,7 @@ class _SotPageState extends State<SotPage> {
 
     var duration = await p.player
         .setUrl('http://shahidchegini.ir/app_kabireh/audios/1/${items[index]}');
+    duration = duration;
     p.play();
     p.setTitle(items[index].toString().replaceAll(".mp3", ""));
 
@@ -212,7 +210,6 @@ class _MusicBottomSheetState extends State<MusicBottomSheet> {
                 child: playButton(p.playing)),
           ],
         ));
-    ;
   }
 }
 

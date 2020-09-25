@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_proje/db.dart';
-import 'package:flutter_proje/resourses.dart';
 
 class MatnPage extends StatefulWidget {
   final Gonah gonah;

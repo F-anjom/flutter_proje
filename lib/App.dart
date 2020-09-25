@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:flutter_proje/ClipPage.dart';
 import 'package:flutter_proje/FirstPage.dart';
-import 'package:flutter_proje/MatnPage.dart';
-import 'package:flutter_proje/SecondPage.dart';
 import 'package:flutter_proje/SotPage.dart';
 import 'package:provider/provider.dart';
 

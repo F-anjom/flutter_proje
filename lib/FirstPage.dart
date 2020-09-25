@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_proje/ClipPage.dart';
 import 'package:flutter_proje/MyDrawer.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_proje/SecondPage.dart';
-import 'package:flutter_proje/TasvirPage.dart';
 import 'package:flutter_proje/db.dart';
 
 class FirstPage extends StatefulWidget {

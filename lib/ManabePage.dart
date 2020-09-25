@@ -17,8 +17,6 @@ class _ManabePageState extends State<ManabePage> {
 
   @override
   void initState() {
-    String dbPath = 'sample.db';
-//    DatabaseFactory
     super.initState();
   }
 

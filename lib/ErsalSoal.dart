@@ -4,15 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_proje/FirstPage.dart';
 import 'package:flutter_proje/MyDrawer.dart';
-import 'package:intent/extra.dart';
 import 'package:url_launcher/url_launcher.dart';
-//import 'package:android_intent/android_intent.dart';
-import 'package:intent/intent.dart' as android_intent;
-import 'package:intent/action.dart' as android_action;
 
 class ErsalSoal extends StatelessWidget {
-  var topicController = TextEditingController();
-  var textController = TextEditingController();
+  final topicController = TextEditingController();
+  final textController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {

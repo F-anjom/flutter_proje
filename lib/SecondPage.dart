@@ -8,10 +8,9 @@ import 'package:flutter_proje/MyDrawer.dart';
 import 'package:flutter_proje/SotPage.dart';
 import 'package:flutter_proje/TasvirPage.dart';
 import 'package:flutter_proje/db.dart';
-import 'package:provider/provider.dart';
 
 class SecondPage extends StatefulWidget {
-  int gonahId;
+  final int gonahId;
 
   SecondPage(this.gonahId);
   @override
